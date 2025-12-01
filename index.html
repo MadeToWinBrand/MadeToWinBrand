@@ -724,113 +724,6 @@ function checkoutPay(event, productId){
   if(url && url.length>5){ window.open(url,'_blank'); return; }
   alert('No buy link configured for this product. Create a Stripe Payment Link or PayPal Buy Button and paste it in scripts.js productPayLinkMap.');
 }
-// scripts.js — Client-side cart + checkout integration helpers
-
-const CART_KEY = 'mtw_cart_v1';
-
-// Simple cart structure: [{id, name, price, qty}]
-function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ return []; } }
-function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
-
-function addToCartFromButton(button){
-  const card = button.closest('.product-card');
-  const id = card.dataset.id;
-  const name = card.dataset.name;
-  const price = parseFloat(card.dataset.price);
-  addToCart({id, name, price, qty:1});
-}
-
-function addToCart(item){
-  const cart = loadCart();
-  const idx = cart.findIndex(i=>i.id===item.id);
-  if(idx === -1) cart.push(item); else cart[idx].qty += item.qty;
-  saveCart(cart);
-  showToast(`${item.name} added to cart`);
-}
-
-function showToast(text){
-  // lightweight notification
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.textContent = text;
-  document.body.appendChild(t);
-  setTimeout(()=> t.classList.add('visible'),20);
-  setTimeout(()=> { t.classList.remove('visible'); setTimeout(()=>t.remove(),300); },2500);
-}
-
-// update cart UI (counts and totals)
-function updateCartUI(){
-  const cart = loadCart();
-  const count = cart.reduce((s,i)=>s+i.qty,0);
-  const total = cart.reduce((s,i)=>s+(i.price*i.qty),0);
-  document.getElementById('cart-count') && (document.getElementById('cart-count').textContent = count);
-  document.getElementById('cart-total') && (document.getElementById('cart-total').textContent = total.toFixed(2));
-  document.getElementById('cart-subtotal') && (document.getElementById('cart-subtotal').textContent = total.toFixed(2));
-  // render items in cart modal
-  const itemsEl = document.getElementById('cart-items');
-  if(itemsEl){
-    itemsEl.innerHTML = cart.length ? cart.map(i=>`
-      <div class="cart-item" data-id="${i.id}">
-        <div style="display:flex;justify-content:space-between;gap:8px">
-          <div><strong>${i.name}</strong><div class="small">Qty: ${i.qty}</div></div>
-          <div>$${(i.price*i.qty).toFixed(2)}</div>
-        </div>
-      </div>
-    `).join('') : '<div class="small" style="padding:12px">Your cart is empty.</div>';
-  }
-}
-
-// attach add-to-cart handlers
-document.addEventListener('click', function(e){
-  if(e.target.matches('.add-to-cart')) { e.preventDefault(); addToCartFromButton(e.target); }
-  if(e.target.matches('#cart-open')) { openCart(); }
-  if(e.target.matches('#close-cart')) { closeCart(); }
-  if(e.target.matches('#checkout') || e.target.matches('#checkout2')) { proceedToCheckout(); }
-});
-
-// cart modal open/close
-function openCart(){ document.getElementById('cart-modal').style.display='flex'; document.getElementById('cart-modal').setAttribute('aria-hidden','false'); updateCartUI(); }
-function closeCart(){ document.getElementById('cart-modal').style.display='none'; document.getElementById('cart-modal').setAttribute('aria-hidden','true'); }
-
-// checkout: you can use Stripe Payment Links or PayPal. We'll attempt Stripe Checkout redirect if you supply a mapping.
-const productPayLinkMap = {
-  // Example mapping: 'mtw-tee': 'https://buy.stripe.com/example_link'
-  // fill these with real Stripe Payment Links or PayPal checkout URLs
-  'mtw-tee': '',
-  'mtw-hoodie': '',
-  'mtw-box': ''
-};
-
-function collectCartForCheckout(){
-  return loadCart().map(i=>({id:i.id, name:i.name, price:i.price, qty:i.qty}));
-}
-
-async function proceedToCheckout(){
-  const cart = loadCart();
-  if(!cart || !cart.length){ alert('Your cart is empty.'); return; }
-
-  // Option A — if you have created Stripe Payment Links per product, we redirect to the product-level link
-  // If all items have productPayLinkMap entries, open links one-by-one or create a server-side Checkout session to handle multiple items.
-  const knownAll = cart.every(it => productPayLinkMap[it.id] && productPayLinkMap[it.id].length>5);
-  if(knownAll){
-    // If there's a single combined payment link you can set productPayLinkMap['combined'] and redirect
-    // For now redirect to Stripe for first item (simplest flow)
-    window.location.href = productPayLinkMap[cart[0].id];
-    return;
-  }
-
-  // Option B — build a fallback PayPal or Stripe Checkout suggestion:
-  // Fall back to opening PayPal.me link (or contact) or ask to create Payment Links.
-  alert('No hosted payment links found. Please create Stripe Payment Links or add PayPal buy buttons. See README instructions in the site repo.');
-}
-
-// checkoutPay called by Buy Now (single product immediate)
-function checkoutPay(event, productId){
-  event.preventDefault();
-  const url = productPayLinkMap[productId];
-  if(url && url.length>5){ window.open(url,'_blank'); return; }
-  alert('No buy link configured for this product. Create a Stripe Payment Link or PayPal Buy Button and paste it in scripts.js productPayLinkMap.');
-}
 
 // initialization
 updateCartUI();
@@ -851,4 +744,10 @@ updateCartUI();
   <rect x="160" y="20" width="280" height="90" rx="12" fill="#0a0a0a"/>
   <text x="300" y="330" font-family="sans-serif" font-size="54" fill="#fff" font-weight="800" text-anchor="middle">MTW</text>
   <text x="300" y="372" font-family="sans-serif" font-size="12" fill="#ddd" text-anchor="middle">HEAVY HOODIE</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <rect x="30" y="60" rx="30" ry="30" width="540" height="420" fill="#0b0b0b"/>
+  <circle cx="300" cy="220" r="40" fill="#111"/>
+  <text x="300" y="360" font-family="sans-serif" font-size="40" fill="#fff" font-weight="800" text-anchor="middle">MTW</text>
+  <text x="300" y="400" font-family="sans-serif" font-size="12" fill="#ddd" text-anchor="middle">FIGHT EDITION</text>
 </svg>
