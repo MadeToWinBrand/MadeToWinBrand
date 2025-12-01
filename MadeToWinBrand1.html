@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MTW — Made To Win</title>
+  <meta name="description" content="MTW — Made To Win: minimalist athletic apparel. Built for fighters, dreamers, and the everyday champion." />
+  <style>
+    :root{
+      --bg:#0f0f0f; --muted:#bdbdbd; --accent:#ffffff; --card:#121212;
+      --maxw:1100px; --radius:10px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#fbfbfb 0,#f6f6f6 100%);color:var(--bg);}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:40px auto;padding:0 20px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo svg{height:36px;width:36px}
+    nav a{margin-left:18px;color:#222;font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;margin-top:20px}
+    .hero .copy h1{font-size:44px;margin:0 0 12px}
+    .hero .copy p{color:#333;margin:0 0 18px;line-height:1.5}
+    .cta{display:inline-block;background:#000;color:#fff;padding:12px 20px;border-radius:8px;font-weight:700}
+
+    /* Shop */
+    .filters{display:flex;gap:10px;margin:28px 0}
+    .filter-btn{background:#fff;border:1px solid #e6e6e6;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .product{background:#fff;border-radius:12px;padding:14px;border:1px solid #eee;display:flex;flex-direction:column;gap:12px}
+    .mockup{height:260px;border-radius:8px;background:linear-gradient(180deg,#111 0,#222 60%);display:flex;align-items:center;justify-content:center;color:#fff;position:relative;overflow:hidden}
+    .mockup img{max-width:80%;max-height:80%}
+    .prod-meta{display:flex;justify-content:space-between;align-items:center}
+    .price{font-weight:800}
+
+    /* Size chart & modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center}
+    .modal .card{background:#fff;padding:24px;border-radius:12px;max-width:760px;width:96%}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+
+    /* Contact/Policies */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+    .policy{background:#fff;padding:18px;border-radius:12px;border:1px solid #eee}
+    .policy img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+
+    footer{margin:48px 0 80px;color:#666;text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <!-- Minimal MTW mark -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="100" height="100" rx="18" fill="#000" />
+          <text x="50" y="58" text-anchor="middle" font-family="Arial" font-weight="700" font-size="46" fill="#fff">MTW</text>
+        </svg>
+        <div style="font-weight:800;letter-spacing:1px">MTW</div>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#contact">Contact</a>
+        <a href="#policies">Policies</a>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="copy">
+        <h1>MTW — Made To Win</h1>
+        <p>Simple. Bold. Universal. MTW was built for the fighters, the underdogs, the early risers and the comeback stories. Our pieces are minimalist performance wear designed to remind you: you were made to win.</p>
+        <a class="cta" href="#shop">Shop the Collection</a>
+        <div style="margin-top:18px;color:var(--muted)">Free worldwide shipping on first orders over $120. Sustainable print methods. High-quality cotton blends.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <!-- hero mockups (SVG product placeholders) -->
+        <div class="policy" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:260px">
+          <svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="220" height="180" rx="12" fill="#111" />
+            <text x="110" y="98" font-family="Arial" font-weight="700" font-size="28" fill="#fff" text-anchor="middle">MTW Shirt</text>
+          </svg>
+          <div style="margin-top:10px;font-weight:700">Signature Tee — Black</div>
+        </div>
+
+        <div class="policy" style="padding:12px">
+          <div style="font-weight:700;margin-bottom:8px">Why MTW?</div>
+          <div style="color:var(--muted);line-height:1.4">We keep design simple to let your performance speak. Clean logos, premium fits, and sport-specific pieces for boxing, running, and training.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" style="margin-top:38px">
+      <h2 style="margin:0 0 6px">Shop</h2>
+      <div style="color:var(--muted);margin-bottom:14px">Filter by category</div>
+      <div class="filters">
+        <button class="filter-btn" data-cat="all">All</button>
+        <button class="filter-btn" data-cat="tees">Tees</button>
+        <button class="filter-btn" data-cat="hoodies">Hoodies</button>
+        <button class="filter-btn" data-cat="boxing">Boxing</button>
+        <button class="filter-btn" data-cat="running">Running</button>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- Product 1 -->
+        <article class="product" data-cat="tees">
+          <div class="mockup">
+            <!-- simple SVG mockup to represent high-quality product image -->
+            <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width:64%;height:64%">
+              <rect width="600" height="400" rx="24" fill="#0b0b0b" />
+              <text x="300" y="220" text-anchor="middle" font-size="46" font-family="Arial" font-weight="700" fill="#fff">MTW</text>
+              <text x="300" y="260" text-anchor="middle" font-size="18" fill="#fff">Made To Win</text>
+            </svg>
+          </div>
+          <div style="font-weight:800">Signature Tee — Black</div>
+          <div class="prod-meta"><div class="price">$32</div><button class="filter-btn" onclick="openProduct(this)">View</button></div>
+        </article>
+
+        <!-- Product 2: Hoodie -->
+        <article class="product" data-cat="hoodies">
+          <div class="mockup">
+            <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width:64%;height:64%">
+              <rect width="600" height="400" rx="24" fill="#222" />
+              <text x="300" y="220" text-anchor="middle" font-size="40" font-family="Arial" font-weight="700" fill="#fff">MTW</text>
+            </svg>
+          </div>
+          <div style="font-weight:800">MTW Hoodie — Black</div>
+          <div class="prod-meta"><div class="price">$64</div><button class="filter-btn" onclick="openProduct(this)">View</button></div>
+        </article>
+
+        <!-- Product 3: Boxing Tee -->
+        <article class="product" data-cat="boxing">
+          <div class="mockup">
+            <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width:64%;height:64%">
+              <rect width="600" height="400" rx="24" fill="#111" />
+              <circle cx="420" cy="120" r="48" fill="#fff" />
+              <text x="300" y="240" text-anchor="middle" font-size="34" font-family="Arial" font-weight="700" fill="#fff">MTW</text>
+            </svg>
+          </div>
+          <div style="font-weight:800">Boxing Edition Tee</div>
+          <div class="prod-meta"><div class="price">$36</div><button class="filter-btn" onclick="openProduct(this)">View</button></div>
+        </article>
+
+        <!-- Product 4: Running Tank -->
+        <article class="product" data-cat="running">
+          <div class="mockup">
+            <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width:64%;height:64%">
+              <rect width="600" height="400" rx="24" fill="#111" />
+              <text x="300" y="220" text-anchor="middle" font-size="42" font-family="Arial" font-weight="700" fill="#fff">MTW</text>
+            </svg>
+          </div>
+          <div style="font-weight:800">Performance Tank — Gray</div>
+          <div class="prod-meta"><div class="price">$34</div><button class="filter-btn" onclick="openProduct(this)">View</button></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Size Chart Modal -->
+    <div id="sizeModal" class="modal" onclick="closeModal(event)">
+      <div class="card" role="dialog" aria-modal="true">
+        <h3>Size Chart — Unisex</h3>
+        <p style="color:var(--muted)">Measure flat. Chest = armpit to armpit. Length = shoulder to hem.</p>
+        <table>
+          <thead><tr><th>Size</th><th>Chest (in)</th><th>Length (in)</th></tr></thead>
+          <tbody>
+            <tr><td>XS</td><td>32-34</td><td>26</td></tr>
+            <tr><td>S</td><td>34-37</td><td>27</td></tr>
+            <tr><td>M</td><td>38-41</td><td>28</td></tr>
+            <tr><td>L</td><td>42-45</td><td>29</td></tr>
+            <tr><td>XL</td><td>46-49</td><td>30</td></tr>
+          </tbody>
+        </table>
+        <div style="text-align:right;margin-top:12px"><button class="filter-btn" onclick="closeModal()">Close</button></div>
+      </div>
+    </div>
+
+    <!-- Product Quickview Modal -->
+    <div id="productModal" class="modal" onclick="closeModal(event)">
+      <div class="card" id="productCard">
+        <!-- filled by JS -->
+      </div>
+    </div>
+
+    <!-- Contact & Policies -->
+    <section id="contact" style="margin-top:38px">
+      <h2>Contact</h2>
+      <div style="color:var(--muted);margin-bottom:12px">Questions, wholesale inquiries, or collaborations — reach out.</div>
+      <div class="two-col">
+        <div class="policy">
+          <form action="mailto:hello@mtwbrand.com" method="post" enctype="text/plain">
+            <label style="display:block;margin-bottom:8px;font-weight:700">Email</label>
+            <input name="email" placeholder="you@domain.com" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee;margin-bottom:12px" />
+            <label style="display:block;margin-bottom:8px;font-weight:700">Message</label>
+            <textarea name="message" placeholder="Tell us about your request" style="width:100%;height:120px;padding:10px;border-radius:8px;border:1px solid #eee"></textarea>
+            <div style="margin-top:10px"><button class="filter-btn" type="submit">Send</button></div>
+          </form>
+        </div>
+
+        <div class="policy">
+          <h4 style="margin-top:0">Visit</h4>
+          <p style="color:var(--muted)">Local pop-ups, gyms and event schedules will be posted here soon. For wholesale: hello@mtwbrand.com</p>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400'><rect width='800' height='400' fill='%23ddd'/><text x='50' y='200' font-size='36' fill='%23666'>MTW Pop-up</text></svg>" alt="visit" />
+        </div>
+      </div>
+    </section>
+
+    <section id="policies" style="margin-top:28px">
+      <h2>Returns & Shipping</h2>
+      <div style="color:var(--muted);margin-bottom:12px">Clear, fair, and fast.</div>
+      <div class="two-col">
+        <div class="policy">
+          <h4 style="margin:6px 0">Shipping</h4>
+          <p style="color:var(--muted)">We ship worldwide. Domestic orders: 3–7 business days. International: 7–21 business days depending on destination. Free standard shipping over $120.</p>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='240'><rect width='600' height='240' fill='%23efefef'/><text x='40' y='120' font-size='28' fill='%23666'>Fast Shipping</text></svg>" alt="shipping" />
+        </div>
+
+        <div class="policy">
+          <h4 style="margin:6px 0">Returns</h4>
+          <p style="color:var(--muted)">Returns accepted within 30 days of delivery. Items must be unworn and in original condition. Return shipping fees apply unless the item is defective. For exchanges, contact hello@mtwbrand.com with your order number.</p>
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='240'><rect width='600' height='240' fill='%23f8f8f8'/><text x='40' y='120' font-size='28' fill='%23666'>Easy Returns</text></svg>" alt="returns" />
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="font-weight:700">MTW — Made To Win</div>
+      <div style="margin-top:8px;color:var(--muted)">© <span id="year"></span> MTW Apparel. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filters
+    document.querySelectorAll('.filter-btn[data-cat]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const cat = btn.getAttribute('data-cat');
+        document.querySelectorAll('.product').forEach(p=>{
+          p.style.display = (cat==='all' || p.getAttribute('data-cat')===cat) ? 'flex' : 'none';
+        })
+      })
+    });
+
+    // Product quickview
+    function openProduct(el){
+      const item = el.closest('.product');
+      const title = item.querySelector('div[style*="font-weight:800"]').textContent;
+      const price = item.querySelector('.price').textContent;
+      const mockup = item.querySelector('.mockup').innerHTML;
+      const card = document.getElementById('productCard');
+      card.innerHTML = `\n        <div style="display:flex;gap:18px;align-items:flex-start">\n          <div style=\"flex:0 0 44%\">${mockup}</div>\n          <div style=\"flex:1\">\n            <h3 style=\"margin-top:0\">${title}</h3>\n            <div style=\"font-weight:800;font-size:20px;margin:8px 0\">${price}</div>\n            <p style=\"color:#666\">Clean, comfortable, and built for performance. Signed MTW logo screen-printed with water-based inks on premium ringspun cotton blend. Made for training and daily wear.</p>\n            <div style=\"margin-top:12px;display:flex;gap:8px\">\n              <select id=\"sizeSelect\" style=\"padding:10px;border-radius:8px;border:1px solid #eee\"><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option></select>\n              <button class=\"filter-btn\" onclick=\"addToCart()\">Add to cart</button>\n              <button class=\"filter-btn\" onclick=\"document.getElementById('sizeModal').style.display='flex'\">Size chart</button>\n            </div>\n            <div style=\"margin-top:12px;color:var(--muted)\">Ships in 3–7 business days.</div>\n          </div>\n        </div>\n      `;
+      document.getElementById('productModal').style.display='flex';
+    }
+
+    function closeModal(e){
+      if(!e || e.target.classList.contains('modal')){
+        document.querySelectorAll('.modal').forEach(m=>m.style.display='none');
+      }
+    }
+
+    function addToCart(){
+      alert('Added to cart — this demo uses a placeholder checkout. Connect your Shopify / payment gateway to enable checkout.');
+    }
+
+    // small accessibility: allow Escape to close modals
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'){document.querySelectorAll('.modal').forEach(m=>m.style.display='none')} });
+  </script>
+</body>
+</html>
