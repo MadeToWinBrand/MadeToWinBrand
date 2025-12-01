@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MTW — Made To Win</title>
+  <meta name="description" content="MTW — Made To Win. Simple, bold athletic apparel for fighters, dreamers, and the underdogs." />
+  <style>
+    /* Reset & base */
+    :root{
+      --bg:#ffffff;
+      --text:#0b0b0b;
+      --muted:#6b6b6b;
+      --accent:#111111;
+      --maxw:1100px;
+      --radius:12px;
+      --card:#f7f7f7;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    .wrap{max-width:var(--maxw);margin:40px auto;padding:0 20px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+    .logo-mark{
+      width:56px;height:56px;border-radius:10px;background:#000;color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:#000;color:#fff;padding:10px 14px;border-radius:8px}
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr 440px;gap:36px;align-items:center;margin-top:36px;
+    }
+    .hero .story{
+      background:linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+      padding:32px;border-radius:16px;
+    }
+    .hero h1{font-size:38px;margin:0 0 12px}
+    .lead{font-size:17px;color:var(--muted);margin-bottom:18px;white-space:pre-line}
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{
+      display:inline-block;background:#000;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;
+    }
+    .ghost{border:2px solid #111;color:#111;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    /* Right column hero mockup */
+    .hero-mock{
+      background:linear-gradient(180deg,#111 0%, #000 100%);
+      border-radius:16px;padding:28px;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      min-height:420px;position:relative;overflow:hidden;
+    }
+    .mock-img{width:220px;height:220px;border-radius:12px;background:#222;display:grid;place-items:center;font-weight:800;font-size:22px}
+    .mock-tag{margin-top:18px;color:#e6e6e6;font-weight:700}
+    .hero .kicker{color:#ffdd57;font-weight:800;letter-spacing:1px}
+    /* Shop */
+    .section{margin-top:48px}
+    .section h2{font-size:22px;margin-bottom:14px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+    .product-img{width:100%;height:220px;border-radius:10px;background:#e6e6e6;display:grid;place-items:center;color:#666;font-weight:700}
+    .price{margin-left:auto;font-weight:800}
+    .product-row{display:flex;width:100%;align-items:center;gap:10px}
+    .small{font-size:13px;color:var(--muted)}
+    /* Features */
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .pill{background:#fff;border:1px solid #eee;padding:10px 12px;border-radius:999px;font-weight:700;color:var(--muted)}
+    /* Footer & policies */
+    footer{margin-top:48px;padding:24px;border-top:1px solid #efefef;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .legal{max-width:640px;font-size:14px}
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;z-index:60}
+    .modal{background:#fff;padding:20px;border-radius:12px;max-width:720px;width:92%;box-shadow:0 30px 60px rgba(0,0,0,0.25)}
+    .modal h3{margin-top:0}
+    .close{background:#111;color:#fff;border-radius:8px;padding:8px 10px;text-decoration:none}
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero-mock{min-height:300px}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      nav a{display:none}
+      header{align-items:flex-start;gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo-mark">MTW</div>
+        <div>
+          <div style="font-weight:800">MTW</div>
+          <div style="font-size:12px;color:var(--muted)">Made To Win</div>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#shop">Shop Now</a>
+      </nav>
+    </header>
+
+    <!-- HERO / BRAND STORY -->
+    <section class="hero" id="about">
+      <div class="story">
+        <div class="kicker">MTW — Made To Win</div>
+        <h1>Made to rise. Made to win.</h1>
+        <div class="lead">
+Every person on this planet is born with a spark.
+Some discover it early.
+Some don’t realize it’s there until life pushes them to their knees.
+But the truth is simple: the fire is in all of us.
+
+MTW began with one belief — that greatness isn’t reserved for the chosen few.
+Greatness belongs to anyone who refuses to quit.
+To anyone who gets back up when life hits hard.
+To anyone who chooses discipline over doubt, courage over comfort, and purpose over fear.
+
+Because winning isn’t a moment. It isn’t a trophy, a finish line, or applause.
+Winning is a decision.
+A decision you make every day you wake up and choose to grow, even when it hurts.
+A decision you make when you chase the version of yourself you’ve never met yet.
+A decision you make when you keep moving, even when the world tells you to stop.
+        </div>
+
+        <div class="cta-row">
+          <a class="btn" href="#shop">Shop the Collection</a>
+          <a class="ghost" href="#story-more" id="openStory">Read More</a>
+          <a class="ghost" href="#size" id="openSize">Size Chart</a>
+        </div>
+      </div>
+
+      <div class="hero-mock" aria-hidden="true">
+        <!-- Replace mock placeholders with actual athlete mockups -->
+        <div style="position:absolute;left:0;top:0;padding:18px;color:#fff;font-weight:700">MADE TO WIN</div>
+        <div class="mock-img" id="heroMock">
+          ATHLETE MOCKUP
+        </div>
+        <div class="mock-tag">Bold Logo / Performance Tee</div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="section" id="shop">
+      <h2>Shop — Essentials</h2>
+      <div class="small">Simple. Bold. Built for performance. Replace placeholder images with your mockups in <code>/assets/</code>.</div>
+
+      <div style="margin-top:14px" class="features">
+        <div class="pill">Minimal Design</div>
+        <div class="pill">High-Quality Cotton</div>
+        <div class="pill">Performance Fit</div>
+        <div class="pill">Worldwide Shipping</div>
+      </div>
+
+      <div class="grid" style="margin-top:18px">
+        <!-- Product 1 -->
+        <div class="card">
+          <div class="product-img"><img src="assets/mtw-tee-black.jpg" alt="MTW Tee" style="width:100%;height:100%;object-fit:cover;border-radius:8px" onerror="this.style.display='block';this.parentElement.textContent='MTW Classic Tee\n(placeholder image)';this.parentElement.style.display='grid';this.parentElement.style.placeItems='center'"></div>
+          <div style="display:flex;align-items:center;width:100%">
+            <div>
+              <div style="font-weight:800">MTW Classic Tee</div>
+              <div class="small">Bold chest logo — performance cotton</div>
+            </div>
+            <div class="price">$32</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a class="btn" href="#" onclick="addToCart('MTW Classic Tee')">Add to cart</a>
+            <a class="ghost" href="#contact">Pre-order</a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="card">
+          <div class="product-img"><img src="assets/mtw-hoodie-black.jpg" alt="MTW Hoodie" style="width:100%;height:100%;object-fit:cover;border-radius:8px" onerror="this.style.display='block';this.parentElement.textContent='MTW Hoodie\n(placeholder image)';this.parentElement.style.display='grid';this.parentElement.style.placeItems='center'"></div>
+          <div style="display:flex;align-items:center;width:100%">
+            <div>
+              <div style="font-weight:800">MTW Heavy Hoodie</div>
+              <div class="small">Warm, structured, minimal logo</div>
+            </div>
+            <div class="price">$62</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a class="btn" href="#" onclick="addToCart('MTW Heavy Hoodie')">Add to cart</a>
+            <a class="ghost" href="#contact">Pre-order</a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="card">
+          <div class="product-img"><img src="assets/mtw-compression.jpg" alt="MTW Performance" style="width:100%;height:100%;object-fit:cover;border-radius:8px" onerror="this.style.display='block';this.parentElement.textContent='Performance Compression Tee\n(placeholder image)';this.parentElement.style.display='grid';this.parentElement.style.placeItems='center'"></div>
+          <div style="display:flex;align-items:center;width:100%">
+            <div>
+              <div style="font-weight:800">MTW Performance Tee</div>
+              <div class="small">Compression fit — training ready</div>
+            </div>
+            <div class="price">$36</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a class="btn" href="#" onclick="addToCart('MTW Performance Tee')">Add to cart</a>
+            <a class="ghost" href="#contact">Pre-order</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- sport-specific -->
+      <div style="margin-top:28px">
+        <h2>Sport Editions</h2>
+        <div class="small">Boxing • Fitness • Running</div>
+        <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px;background:#fff;border-radius:12px;padding:12px;border:1px solid #f0f0f0">
+            <div style="font-weight:800">Boxing Edition</div>
+            <div class="small" style="margin-top:8px">Glove-line mark, ring-rope details. Built for fighters.</div>
+            <div style="margin-top:12px"><img src="assets/mtw-boxing.jpg" alt="Boxing Mock" style="width:100%;height:140px;object-fit:cover;border-radius:8px" onerror="this.style.display='none'"></div>
+          </div>
+
+          <div style="flex:1;min-width:260px;background:#fff;border-radius:12px;padding:12px;border:1px solid #f0f0f0">
+            <div style="font-weight:800">Fitness Edition</div>
+            <div class="small" style="margin-top:8px">Barbell motif and bold wordmark: Built to win.</div>
+            <div style="margin-top:12px"><img src="assets/mtw-fitness.jpg" alt="Fitness Mock" style="width:100%;height:140px;object-fit:cover;border-radius:8px" onerror="this.style.display='none'"></div>
+          </div>
+
+          <div style="flex:1;min-width:260px;background:#fff;border-radius:12px;padding:12px;border:1px solid #f0f0f0">
+            <div style="font-weight:800">Running Edition</div>
+            <div class="small" style="margin-top:8px">Streamlined logo with motion marks for pace and forward movement.</div>
+            <div style="margin-top:12px"><img src="assets/mtw-running.jpg" alt="Running Mock" style="width:100%;height:140px;object-fit:cover;border-radius:8px" onerror="this.style.display='none'"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Size chart modal link -->
+    <section class="section" id="size" style="margin-top:32px">
+      <h2>Size Chart</h2>
+      <div class="small">Find your fit — our garments run true to size; performance fits are slightly compressive.</div>
+      <div style="margin-top:10px">
+        <a class="ghost" href="#" id="openSize2">Open Size Chart</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" style="margin-top:32px">
+      <h2>Contact</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <p class="small">Questions about sizing, wholesale, or collaborations? Reach out — we reply fast.</p>
+          <p style="margin-top:12px"><strong>Email</strong><br> <a href="mailto:hello@madetowinbrand.com">hello@madetowinbrand.com</a></p>
+          <p><strong>Wholesale</strong><br><a href="mailto:wholesale@madetowinbrand.com">wholesale@madetowinbrand.com</a></p>
+        </div>
+
+        <form style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:10px" onsubmit="contactSubmit(event)">
+          <input name="name" placeholder="Your name" required style="padding:12px;border-radius:8px;border:1px solid #eee" />
+          <input name="email" placeholder="Email" type="email" required style="padding:12px;border-radius:8px;border:1px solid #eee" />
+          <textarea name="message" placeholder="How can we help?" required style="padding:12px;border-radius:8px;border:1px solid #eee;min-height:120px"></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn" type="submit">Send</button>
+            <a class="ghost" href="#shop">Shop Now</a>
+          </div>
+          <div id="contactResult" style="color:var(--muted);font-size:14px"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Returns & Shipping / Payments -->
+    <section class="section" id="policies" style="margin-top:36px">
+      <h2>Returns, Shipping & Payments</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <div style="flex:1;min-width:320px">
+          <h4>Shipping</h4>
+          <p class="small">We ship worldwide. Orders processed within 1–3 business days. Expedited options available at checkout.</p>
+
+          <h4 style="margin-top:12px">Returns</h4>
+          <p class="small">30-day returns on unworn items with tags. Buyer pays return shipping unless the product is defective.</p>
+        </div>
+        <div style="flex:1;min-width:320px">
+          <h4>Payments</h4>
+          <p class="small">We accept major credit cards, PayPal, Apple Pay, and pay-later options such as Klarna / Afterpay (where available).</p>
+          <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+            <!-- simple SVG payment icons -->
+            <div style="width:56px;height:36px;border-radius:8px;background:#111;color:#fff;display:grid;place-items:center;font-weight:800">V</div>
+            <div style="width:56px;height:36px;border-radius:8px;background:#222;color:#fff;display:grid;place-items:center;font-weight:800">P</div>
+            <div style="width:56px;height:36px;border-radius:8px;background:#333;color:#fff;display:grid;place-items:center;font-weight:800">AP</div>
+            <div style="width:56px;height:36px;border-radius:8px;background:#444;color:#fff;display:grid;place-items:center;font-weight:800">K</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <div style="font-weight:800">MTW</div>
+        <div class="small" style="max-width:300px">Made To Win. Not by luck. Not by chance. But by heart, discipline, and the choice to rise every single day.</div>
+      </div>
+
+      <div class="legal">
+        <div style="font-weight:700;margin-bottom:6px">Policy & Legal</div>
+        <div class="small">Shipping Policy · Returns · Privacy Policy · Terms of Service</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal DOM -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-hidden="true">
+    <div class="modal" role="document" aria-modal="true">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="modalTitle">Size Chart</h3>
+        <a href="#" class="close" id="closeModal">Close</a>
+      </div>
+      <div id="modalBody" style="margin-top:12px">
+        <p style="margin-top:0" class="small">Use these measurements as a guide. For a performance/compression fit, consider sizing up if you prefer looser movement.</p>
+        <table style="width:100%;border-collapse:collapse;margin-top:10px">
+          <thead>
+            <tr>
+              <th style="text-align:left;padding:8px;border-bottom:1px solid #eee">Size</th>
+              <th style="text-align:left;padding:8px;border-bottom:1px solid #eee">Chest (in)</th>
+              <th style="text-align:left;padding:8px;border-bottom:1px solid #eee">Waist (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding:8px">S</td><td style="padding:8px">34–36</td><td style="padding:8px">28–30</td></tr>
+            <tr><td style="padding:8px">M</td><td style="padding:8px">38–40</td><td style="padding:8px">31–33</td></tr>
+            <tr><td style="padding:8px">L</td><td style="padding:8px">42–44</td><td style="padding:8px">34–36</td></tr>
+            <tr><td style="padding:8px">XL</td><td style="padding:8px">46–48</td><td style="padding:8px">38–40</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simple UI interactions
+    const modal = document.getElementById('modalBackdrop');
+    document.getElementById('openSize')?.addEventListener('click', (e)=>{ e.preventDefault(); openModal('Size Chart',''); });
+    document.getElementById('openSize2')?.addEventListener('click', (e)=>{ e.preventDefault(); openModal('Size Chart',''); });
+    document.getElementById('openStory')?.addEventListener('click', (e)=>{ e.preventDefault(); openModal('More About MTW', 'MTW was built for the fighters. The dreamers. The underdogs. The quiet warriors who carry heavy stories but walk with their heads high.'); });
+
+    document.getElementById('closeModal')?.addEventListener('click', (e)=>{ e.preventDefault(); closeModal(); });
+    modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    function openModal(title, bodyHTML){
+      document.getElementById('modalTitle').textContent = title;
+      if(bodyHTML) document.getElementById('modalBody').innerHTML = '<p class="small">'+bodyHTML+'</p>';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+
+    // Contact form: simple mailto fallback
+    function contactSubmit(e){
+      e.preventDefault();
+      const f = e.target;
+      const name = encodeURIComponent(f.name.value.trim());
+      const email = encodeURIComponent(f.email.value.trim());
+      const msg = encodeURIComponent(f.message.value.trim() + "\\n\\n— " + name);
+      const mailto = `mailto:hello@madetowinbrand.com?subject=${encodeURIComponent('Contact from site: ' + name)}&body=${msg}`;
+      // Provide user feedback and open mail client
+      document.getElementById('contactResult').textContent = 'Opening your email client to finish sending — or copy this address: hello@madetowinbrand.com';
+      window.location.href = mailto;
+      setTimeout(()=>{ document.getElementById('contactResult').textContent = 'If your email client did not open, please send your message to hello@madetowinbrand.com'; }, 3000);
+    }
+
+    // Mock add to cart
+    function addToCart(name){
+      alert(name + ' added to cart. (This is a demo placeholder — connect to your e-commerce backend to handle carts and checkout.)');
+    }
+
+    // Accessibility: trap focus inside modal when open (simple)
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
+  </script>
+</body>
+</html>
