@@ -1,0 +1,15 @@
+MadeToWinBrand/
+│
+├── index.html
+├── shop.html
+├── contact.html
+├── policies.html
+├── style.css
+├── scripts.js
+│
+└── assets/
+      ├── athlete.png
+      ├── tshirt.png
+      ├── hoodie.png
+      ├── boxing.png
+      └── logo.png
